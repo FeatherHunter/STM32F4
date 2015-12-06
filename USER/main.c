@@ -33,9 +33,17 @@
 #include "infrared_remote_ctrl.h"
 #include "stmflash.h"
 
+#include "w25qxx.h"
+#include "bluetooth.h"
+#include "rs485.h"
+#include "sram.h"
+#include "usmart.h"
+#include "malloc.h"
+
 u8 flush_key = 1;
 u8 lcd_id[12];
 u8 CanMode;
+u16 w25q_id;
 
 #if 1
 
@@ -47,17 +55,10 @@ void ctp_test(void)
 }
 int main(void)
 {
-	u8 key;
-	u8 u3_bufcount;
-	u8 i = 0;
-	u8 ci;
 	u8 itouch;
-	u8 t = 0;
 	//u8 temp = 0, humi = 0;
-	u32 data;
 	u32 data_rng;
-	long long temp;
-	u8 role = 0xFF;
+	//u8 role = 0xFF;
 	
 	u8 RTC_DBUF[20];
 	u8 RTC_TBUF[20];
@@ -69,7 +70,7 @@ int main(void)
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);  //NVIC
 	uart_init(115200);
 	delay_init(168); //systick = sysCLK/8,50us = 50 * 21 systick.if use 84,1us实际上为1/2us
-	
+	usmart_dev.init(84);  //84?why?	
 	functions_init();
 	
 	//Dac1_Init();
@@ -91,11 +92,6 @@ int main(void)
 	//	delay_ms(200);
 	//}
 	///////////////////////////////////////////////////////////////
-	//while(HC05_Init())//9600bound
-	//{
-	//	printf("HC05 ERROR!\n");      //==HC05==
-	//	delay_ms(200);
-	//}
 	//printf("HC05: Slave!\n");
 	//HC05_Set_Cmd("AT+ROLE=0");
 	///////////////////////////////////////////////////////////////
@@ -144,7 +140,8 @@ int main(void)
 				}
 			}//end of for
 			
-			remote_ctrl(); //红外线控制
+			remote_ctrl();    //红外线控制
+			bluetooth_deal(); //蓝牙控制
 			
 			tp_dev.x[itouch] = 0;
 			tp_dev.y[itouch] = 0;
@@ -233,6 +230,8 @@ int main(void)
 
 void functions_init()
 {
+	u8 hc05_role;
+	
 	LED_Init();            //LED
 	LCD_Init();            //LCD
 	KEY_Init();            //KEY
@@ -303,12 +302,80 @@ void functions_init()
 	{
 		LCD_ShowString(240,24*5, 200, 24, 24, "Normal");
 	}
-	
+  /*beep init*/
 	BEEP_Init();
 	POINT_COLOR = BLUE;
 	LCD_ShowString(10,24*10, 200, 24, 24, "BEEP");
 	POINT_COLOR = GREEN;
 	LCD_ShowString(400,24*10, 200, 24, 24, "OK");	
+	
+	/*w25qxx init*/
+	W25QXX_Init();
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,24*11, 200, 24, 24, "SPI FLASH");
+	while(W25QXX_ReadID() != W25Q128)
+	{
+		POINT_COLOR = RED;
+		LCD_ShowString(24*7+2,24*11, 24*11, 24, 24,  " W25Q128 Check Failed");
+		delay_ms(250);
+		LCD_ShowString(24*7+2,24*11, 24*11, 24, 24,  " Please Check .......");
+		delay_ms(250);
+	}
+	POINT_COLOR = GREEN;
+	LCD_ShowString(24*7+2,24*11, 24*101, 24, 24,   "                   OK");	
+	
+	
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,24*12, 200, 24, 24, "HC05");
+	while(HC05_Init())     //9600 baund HC05
+	{
+		POINT_COLOR = RED;
+		LCD_ShowString(24*7+2,24*12, 24*11, 24, 24,  " HC05 Check Failed");
+		delay_ms(250);
+		LCD_ShowString(24*7+2,24*12, 24*11, 24, 24,  " Please Check ....");
+		delay_ms(250);
+	}
+	POINT_COLOR = GREEN;
+	LCD_ShowString(24*7+2,24*12, 24*101, 24, 24,   "                   OK");
+	hc05_role = HC05_Get_Role();
+	POINT_COLOR = BLUE;
+	if(hc05_role == 1) 
+	{
+		LCD_ShowString(300,24*12, 200, 24, 24,  "MASTER");
+	}
+	else if(hc05_role == 0)
+	{
+		LCD_ShowString(300,24*12, 200, 24, 24,  "SLAVE");
+	}
+	else
+	{
+		POINT_COLOR = RED;
+		LCD_ShowString(300,24*12, 200, 24, 24,  "0xFF");
+	}
+	
+	/*RS485 init*/
+	RS485_Init(9600);
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,24*13, 200, 24, 24, "RS485");
+	POINT_COLOR = GREEN;
+	LCD_ShowString(400,24*13, 200, 24, 24, "OK");	
+	
+	/*FSMC SRAM*/
+	FSMC_SRAM_Init();
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,24*14, 200, 24, 24, "FSMC SRAM");
+	POINT_COLOR = GREEN;
+	LCD_ShowString(400,24*14, 200, 24, 24, "OK");
+	
+	/*MEM MANEGEMENT*/
+	my_mem_init(SRAMIN);
+	my_mem_init(SRAMEX);
+	my_mem_init(SRAMCCM);
+	
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,24*15, 200, 24, 24, "MEM MANEGEMENT");
+	POINT_COLOR = GREEN;
+	LCD_ShowString(400,24*15, 200, 24, 24, "OK");
 	
 	delay_ms(1500);
 

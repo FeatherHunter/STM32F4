@@ -13,6 +13,7 @@
 #include "remote.h"
 #include "can.h"
 #include "stmflash.h"
+#include "w25qxx.h"
 
 //要写入到STM32 FLASH的字符串数组
 const u8 TEXT_Buffer[]={"STM32 FLASH TEST"};
@@ -20,7 +21,8 @@ const u8 TEXT_Buffer[]={"STM32 FLASH TEST"};
 #define SIZE TEXT_LENTH/4+((TEXT_LENTH%4)?1:0)
 #define FLASH_SAVE_ADDR  0X080e0000 	//设置FLASH 保存地址(必须为偶数，且所在扇区,要大于本代码所占用到的扇区.
 										//否则,写操作的时候,可能会导致擦除整个扇区,从而引起部分程序丢失.引起死机.
-										
+
+
 u8 REMOTE_POWER = 0;
 /**
  * @Function void remote_ctrl(void)
@@ -36,6 +38,10 @@ void remote_ctrl(void)
 	u8 Can_Buf[8];
 	
 	u8 flash_data[SIZE];
+	u32 spiflash_size = 16 * 1024 * 1024;
+	
+	u8 SPI_Buffer[]={"Explorer STM32F4 SPI TEST"};
+  u8 spi_size = sizeof(SPI_Buffer);
 	
 	if(InfraredKey = Remote_Scan())
 	{
@@ -95,12 +101,26 @@ void remote_ctrl(void)
 							LCD_ShowString(20, 324, 15 * 24, 24, 24,flash_data);//显示读到的字符串
 						}
 						break;		    
-				case 122:REMOTE_IBUF="6";break;		  
-				case 16:REMOTE_IBUF="7";break;			   					
+				case 122:REMOTE_IBUF="6";
+						{
+							LCD_ShowString(20, 324, 15 * 24, 24, 24,"Start Write SPI FLASH....");
+							W25QXX_Write((u8 *)SPI_Buffer, spiflash_size - 100, spi_size); //写入到spi flash最大地址-100的地方
+							LCD_ShowString(20, 324, 15 * 24, 24, 24, "SPI FLASH Write Finished!");//提示传送完成
+						}
+						break;		  
+				case 16:REMOTE_IBUF="7";
+						{
+							LCD_ShowString(20, 324, 15 * 24, 24, 24,"Start Read FLASH.... ");
+							W25QXX_Read(flash_data, spiflash_size - 100, spi_size);  // 从spi flash最大地址-100 读取
+							LCD_ShowString(20, 324, 15 * 24, 24, 24,"The Data Readed Is:  ");//提示传送完成
+							LCD_ShowString(20, 348, 15 * 24, 24, 24,flash_data);//显示读到的字符串
+						}
+						break;						
 				case 56:REMOTE_IBUF="8";break;	 
 				case 90:REMOTE_IBUF="9";break;
 				case 66:REMOTE_IBUF="0";break;
 				case 82:REMOTE_IBUF="DELETE";break;
+				default :REMOTE_IBUF="haha"; break;
 			}//end of switch
 			if(REMOTE_POWER)
 			{

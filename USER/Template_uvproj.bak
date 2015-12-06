@@ -350,7 +350,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\FWLIB\inc;..\HARDWARE\LED;..\HARDWARE\BEEP;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\LCD;..\HARDWARE\TIMER;..\HARDWARE\RNG;..\HARDWARE\PWM;..\HARDWARE\DHT11;..\HARDWARE\HC05;..\HARDWARE\USART3;..\HARDWARE\RTC;..\HARDWARE\ADC;..\HARDWARE\DAC;..\HARDWARE\PWM_DAC;..\HARDWARE\ADC3;..\HARDWARE\LSENS;..\HARDWARE\TPAD;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\HARDWARE\TOUCH;..\SOFTWARE\GRAPHIC;..\HARDWARE\RNG;..\HARDWARE\REMOTE;..\HARDWARE\CAN;..\HARDWARE\STMFLASH;..\SOFTWARE\REMOTECTRL</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\FWLIB\inc;..\HARDWARE\LED;..\HARDWARE\BEEP;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\LCD;..\HARDWARE\TIMER;..\HARDWARE\RNG;..\HARDWARE\PWM;..\HARDWARE\DHT11;..\HARDWARE\HC05;..\HARDWARE\USART3;..\HARDWARE\RTC;..\HARDWARE\ADC;..\HARDWARE\DAC;..\HARDWARE\PWM_DAC;..\HARDWARE\ADC3;..\HARDWARE\LSENS;..\HARDWARE\TPAD;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\HARDWARE\TOUCH;..\SOFTWARE\GRAPHIC;..\HARDWARE\RNG;..\HARDWARE\REMOTE;..\HARDWARE\CAN;..\HARDWARE\STMFLASH;..\SOFTWARE\REMOTECTRL;..\HARDWARE\STMFLASH;..\HARDWARE\SPI;..\HARDWARE\W25QXX;..\SOFTWARE\BLUETOOTH;..\HARDWARE\RS485;..\HARDWARE\SRAM</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -761,6 +761,26 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\STMFLASH\stmflash.c</FilePath>
             </File>
+            <File>
+              <FileName>w25qxx.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\W25QXX\w25qxx.c</FilePath>
+            </File>
+            <File>
+              <FileName>spi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SPI\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>rs485.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\RS485\rs485.c</FilePath>
+            </File>
+            <File>
+              <FileName>sram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\SRAM\sram.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -775,6 +795,11 @@
               <FileName>infrared_remote_ctrl.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SOFTWARE\REMOTECTRL\infrared_remote_ctrl.c</FilePath>
+            </File>
+            <File>
+              <FileName>bluetooth.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SOFTWARE\BLUETOOTH\bluetooth.c</FilePath>
             </File>
           </Files>
         </Group>

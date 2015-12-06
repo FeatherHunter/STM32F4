@@ -69,10 +69,19 @@
 ### List of Objects: adding '"..\obj\remote.o"'
 ### List of Objects: adding '"..\obj\can.o"'
 ### List of Objects: adding '"..\obj\stmflash.o"'
+### List of Objects: adding '"..\obj\w25qxx.o"'
+### List of Objects: adding '"..\obj\spi.o"'
+### List of Objects: adding '"..\obj\rs485.o"'
+### List of Objects: adding '"..\obj\sram.o"'
 ### List of Objects: adding '"..\obj\graphic.o"'
 ### List of Objects: adding '"..\obj\infrared_remote_ctrl.o"'
+### List of Objects: adding '"..\obj\bluetooth.o"'
+### List of Objects: adding '"..\obj\usmart.o"'
+### List of Objects: adding '"..\obj\usmart_config.o"'
+### List of Objects: adding '"..\obj\usmart_str.o"'
+### List of Objects: adding '"..\obj\malloc.o"'
 ### ADS-LD Command completed:
---cpu Cortex-M4.fp "..\obj\main.o" "..\obj\stm32f4xx_it.o" "..\obj\system_stm32f4xx.o" "..\obj\startup_stm32f40_41xxx.o" "..\obj\misc.o" "..\obj\stm32f4xx_adc.o" "..\obj\stm32f4xx_can.o" "..\obj\stm32f4xx_crc.o" "..\obj\stm32f4xx_cryp.o" "..\obj\stm32f4xx_cryp_aes.o" "..\obj\stm32f4xx_cryp_des.o" "..\obj\stm32f4xx_cryp_tdes.o" "..\obj\stm32f4xx_dac.o" "..\obj\stm32f4xx_dbgmcu.o" "..\obj\stm32f4xx_dcmi.o" "..\obj\stm32f4xx_dma2d.o" "..\obj\stm32f4xx_dma.o" "..\obj\stm32f4xx_exti.o" "..\obj\stm32f4xx_flash.o" "..\obj\stm32f4xx_flash_ramfunc.o" "..\obj\stm32f4xx_fsmc.o" "..\obj\stm32f4xx_gpio.o" "..\obj\stm32f4xx_hash.o" "..\obj\stm32f4xx_hash_md5.o" "..\obj\stm32f4xx_hash_sha1.o" "..\obj\stm32f4xx_i2c.o" "..\obj\stm32f4xx_iwdg.o" "..\obj\stm32f4xx_ltdc.o" "..\obj\stm32f4xx_pwr.o" "..\obj\stm32f4xx_rcc.o" "..\obj\stm32f4xx_rng.o" "..\obj\stm32f4xx_rtc.o" "..\obj\stm32f4xx_sai.o" "..\obj\stm32f4xx_sdio.o" "..\obj\stm32f4xx_spi.o" "..\obj\stm32f4xx_syscfg.o" "..\obj\stm32f4xx_tim.o" "..\obj\stm32f4xx_usart.o" "..\obj\stm32f4xx_wwdg.o" "..\obj\delay.o" "..\obj\sys.o" "..\obj\usart.o" "..\obj\led.o" "..\obj\beep.o" "..\obj\key.o" "..\obj\lcd.o" "..\obj\timer.o" "..\obj\pwm.o" "..\obj\usart3.o" "..\obj\hc05.o" "..\obj\adc.o" "..\obj\dac.o" "..\obj\pwmdac.o" "..\obj\adc3.o" "..\obj\lsens.o" "..\obj\tpad.o" "..\obj\ctiic.o" "..\obj\ft5206.o" "..\obj\gt9147.o" "..\obj\ott2001a.o" "..\obj\touch.o" "..\obj\24cxx.o" "..\obj\myiic.o" "..\obj\rng.o" "..\obj\rtc.o" "..\obj\remote.o" "..\obj\can.o" "..\obj\stmflash.o" "..\obj\graphic.o" "..\obj\infrared_remote_ctrl.o" 
+--cpu Cortex-M4.fp "..\obj\main.o" "..\obj\stm32f4xx_it.o" "..\obj\system_stm32f4xx.o" "..\obj\startup_stm32f40_41xxx.o" "..\obj\misc.o" "..\obj\stm32f4xx_adc.o" "..\obj\stm32f4xx_can.o" "..\obj\stm32f4xx_crc.o" "..\obj\stm32f4xx_cryp.o" "..\obj\stm32f4xx_cryp_aes.o" "..\obj\stm32f4xx_cryp_des.o" "..\obj\stm32f4xx_cryp_tdes.o" "..\obj\stm32f4xx_dac.o" "..\obj\stm32f4xx_dbgmcu.o" "..\obj\stm32f4xx_dcmi.o" "..\obj\stm32f4xx_dma2d.o" "..\obj\stm32f4xx_dma.o" "..\obj\stm32f4xx_exti.o" "..\obj\stm32f4xx_flash.o" "..\obj\stm32f4xx_flash_ramfunc.o" "..\obj\stm32f4xx_fsmc.o" "..\obj\stm32f4xx_gpio.o" "..\obj\stm32f4xx_hash.o" "..\obj\stm32f4xx_hash_md5.o" "..\obj\stm32f4xx_hash_sha1.o" "..\obj\stm32f4xx_i2c.o" "..\obj\stm32f4xx_iwdg.o" "..\obj\stm32f4xx_ltdc.o" "..\obj\stm32f4xx_pwr.o" "..\obj\stm32f4xx_rcc.o" "..\obj\stm32f4xx_rng.o" "..\obj\stm32f4xx_rtc.o" "..\obj\stm32f4xx_sai.o" "..\obj\stm32f4xx_sdio.o" "..\obj\stm32f4xx_spi.o" "..\obj\stm32f4xx_syscfg.o" "..\obj\stm32f4xx_tim.o" "..\obj\stm32f4xx_usart.o" "..\obj\stm32f4xx_wwdg.o" "..\obj\delay.o" "..\obj\sys.o" "..\obj\usart.o" "..\obj\led.o" "..\obj\beep.o" "..\obj\key.o" "..\obj\lcd.o" "..\obj\timer.o" "..\obj\pwm.o" "..\obj\usart3.o" "..\obj\hc05.o" "..\obj\adc.o" "..\obj\dac.o" "..\obj\pwmdac.o" "..\obj\adc3.o" "..\obj\lsens.o" "..\obj\tpad.o" "..\obj\ctiic.o" "..\obj\ft5206.o" "..\obj\gt9147.o" "..\obj\ott2001a.o" "..\obj\touch.o" "..\obj\24cxx.o" "..\obj\myiic.o" "..\obj\rng.o" "..\obj\rtc.o" "..\obj\remote.o" "..\obj\can.o" "..\obj\stmflash.o" "..\obj\w25qxx.o" "..\obj\spi.o" "..\obj\rs485.o" "..\obj\sram.o" "..\obj\graphic.o" "..\obj\infrared_remote_ctrl.o" "..\obj\bluetooth.o" "..\obj\usmart.o" "..\obj\usmart_config.o" "..\obj\usmart_str.o" "..\obj\malloc.o" 
 --strict --scatter "..\OBJ\Template.sct" 
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols 
 --info sizes --info totals --info unused --info veneers 
@@ -80,7 +89,7 @@
 ### ADS-LD Output File: '..\OBJ\Template.axf'
 ### ADS-LD Command File: '..\OBJ\Template.lnp'
 ### Checking for dirty Components...
-### Creating CmdFile '..\OBJ\Template.lnp', Handle=0x00001988
+### Creating CmdFile '..\OBJ\Template.lnp', Handle=0x0000106C
 ### Writing '.lnp' file
 ### ADS-LD Command file '..\OBJ\Template.lnp' is ready.
 ### ADS-LD: About to start ADS-LD Thread.

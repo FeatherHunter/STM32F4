@@ -42,3 +42,4 @@
 ..\OBJ\infrared_remote_ctrl.o: ..\HARDWARE\REMOTE\remote.h
 ..\OBJ\infrared_remote_ctrl.o: ..\HARDWARE\CAN\can.h
 ..\OBJ\infrared_remote_ctrl.o: ..\HARDWARE\STMFLASH\stmflash.h
+..\OBJ\infrared_remote_ctrl.o: ..\HARDWARE\W25QXX\w25qxx.h

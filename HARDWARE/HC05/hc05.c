@@ -8,7 +8,7 @@
  *		2.void HC05_CFG_CMD(u8 *str);  //USMART调试
  *		3.u8 HC05_Get_Role(void);      //得到主从
  *		4.u8 HC05_Set_Cmd(u8* atstr);	 //发送AT命令给HC05
- */ 
+ */
 #include "delay.h" 			 
 #include "usart.h" 			 
 #include "usart3.h" 			 

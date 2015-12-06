@@ -64,3 +64,10 @@
 ..\OBJ\main.o: ..\HARDWARE\CAN\can.h
 ..\OBJ\main.o: ..\SOFTWARE\REMOTECTRL\infrared_remote_ctrl.h
 ..\OBJ\main.o: ..\HARDWARE\STMFLASH\stmflash.h
+..\OBJ\main.o: ..\HARDWARE\W25QXX\w25qxx.h
+..\OBJ\main.o: ..\SOFTWARE\BLUETOOTH\bluetooth.h
+..\OBJ\main.o: ..\HARDWARE\RS485\rs485.h
+..\OBJ\main.o: ..\HARDWARE\SRAM\sram.h
+..\OBJ\main.o: ..\USMART\usmart.h
+..\OBJ\main.o: ..\USMART\usmart_str.h
+..\OBJ\main.o: ..\MALLOC\malloc.h
