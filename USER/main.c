@@ -39,6 +39,15 @@
 #include "sram.h"
 #include "usmart.h"
 #include "malloc.h"
+#include "sdio_sdcard.h"
+#include "ff.h"
+#include "exfuns.h"
+
+/********定义变量 FATFS*********/
+FIL fil;
+FRESULT res;
+UINT bww;
+char buf[100];
 
 u8 flush_key = 1;
 u8 lcd_id[12];
@@ -53,6 +62,22 @@ void ctp_test(void)
 {
 	
 }
+//通过串口打印SD卡相关信息
+void show_sdcard_info(void)
+{
+	switch(SDCardInfo.CardType)
+	{
+		case SDIO_STD_CAPACITY_SD_CARD_V1_1:printf("Card Type:SDSC V1.1\r\n");break;
+		case SDIO_STD_CAPACITY_SD_CARD_V2_0:printf("Card Type:SDSC V2.0\r\n");break;
+		case SDIO_HIGH_CAPACITY_SD_CARD:printf("Card Type:SDHC V2.0\r\n");break;
+		case SDIO_MULTIMEDIA_CARD:printf("Card Type:MMC Card\r\n");break;
+	}	
+  printf("Card ManufacturerID:%d\r\n",SDCardInfo.SD_cid.ManufacturerID);	//制造商ID
+ 	printf("Card RCA:%d\r\n",SDCardInfo.RCA);								//卡相对地址
+	printf("Card Capacity:%d MB\r\n",(u32)(SDCardInfo.CardCapacity>>20));	//显示容量
+ 	printf("Card BlockSize:%d\r\n\r\n",SDCardInfo.CardBlockSize);			//显示块大小
+}
+
 int main(void)
 {
 	u8 itouch;
@@ -230,6 +255,7 @@ int main(void)
 
 void functions_init()
 {
+	u32 total, free;
 	u8 hc05_role;
 	
 	LED_Init();            //LED
@@ -377,7 +403,53 @@ void functions_init()
 	POINT_COLOR = GREEN;
 	LCD_ShowString(400,24*15, 200, 24, 24, "OK");
 	
-	delay_ms(1500);
+	/*SD CARD*/
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,24*16, 200, 24, 24, "SD CARD");
+	while(SD_Init())//检测不到SD卡
+	{
+		POINT_COLOR = RED;
+		LCD_ShowString(24*7+2,24*16, 24*11, 24, 24,  " SD Card Error!   ");
+		delay_ms(500);					
+		LCD_ShowString(24*7+2,24*16, 24*11, 24, 24,  " Please Check ....");
+		delay_ms(500);
+	}
+	POINT_COLOR = GREEN;
+	LCD_ShowString(24*7+2,24*16, 24*101, 24, 24,   "                   OK");
+	show_sdcard_info();	//打印SD卡相关信息
+	
+	/****FATFS***/
+	exfuns_init(); //为fatfs相关变量申请内存
+	f_mount(fs[0], "0:", 1);   //挂载SD卡
+	res = f_mount(fs[1], "1:", 1);   //挂载flash
+	if(res==0X0D)//FLASH磁盘,FAT文件系统错误,重新格式化FLASH
+	{
+		LCD_ShowString(10,24*17, 200, 24, 24,"Flash Disk Formatting...");	//格式化FLASH
+		res=f_mkfs("1:",1,4096);//格式化FLASH,1,盘符;1,不需要引导区,8个扇区为1个簇
+		if(res==0)
+		{
+			f_setlabel((const TCHAR *)"1:ALIENTEK");	//设置Flash磁盘的名字为：ALIENTEK
+			LCD_ShowString(10,24*17, 200, 24, 24,    "Flash Disk Format Finish");	//格式化完成
+		}else LCD_ShowString(10,24*17, 200, 24, 24,"Flash Disk Format Error ");	//格式化失败
+		delay_ms(1000);
+	}													    
+	LCD_ShowString(10,24*17, 200, 24, 24,        "                        ");	//清空			  
+	while(exf_getfree("0",&total,&free))	//得到SD卡的总容量和剩余容量
+	{
+		LCD_ShowString(30,24*17,200,16,16,"SD Card Fatfs Error!");
+		delay_ms(200);
+		LCD_Fill(30,24*17,240,24*17+16,WHITE);	//清除显示			  
+		delay_ms(200);
+		LED0=!LED0;//DS0闪烁
+	}													  			    
+ 	POINT_COLOR=BLUE;//设置字体为蓝色	   
+	LCD_ShowString(30,24*17,200,16,16,"FATFS OK!");	 
+	LCD_ShowString(30,24*17+20,200,16,16,"SD Total Size:     MB");	 
+	LCD_ShowString(30,24*17+40,200,16,16,"SD  Free Size:     MB"); 	    
+ 	LCD_ShowNum(30+8*14,24*17+20,total>>10,5,16);				//显示SD卡总容量 MB
+ 	LCD_ShowNum(30+8*14,24*17+40,free>>10,5,16);					//显示SD卡剩余容量 MB		
+	
+	delay_ms(15000);
 
 }
 #endif

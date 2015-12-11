@@ -71,3 +71,8 @@
 ..\OBJ\main.o: ..\USMART\usmart.h
 ..\OBJ\main.o: ..\USMART\usmart_str.h
 ..\OBJ\main.o: ..\MALLOC\malloc.h
+..\OBJ\main.o: ..\HARDWARE\SDIO\sdio_sdcard.h
+..\OBJ\main.o: ..\FATFS\src\ff.h
+..\OBJ\main.o: ..\FATFS\src\integer.h
+..\OBJ\main.o: ..\FATFS\src\ffconf.h
+..\OBJ\main.o: ..\FATFS\exfuns\exfuns.h
