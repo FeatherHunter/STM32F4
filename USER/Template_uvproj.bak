@@ -350,7 +350,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\FWLIB\inc;..\HARDWARE\LED;..\HARDWARE\BEEP;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\LCD;..\HARDWARE\TIMER;..\HARDWARE\RNG;..\HARDWARE\PWM;..\HARDWARE\DHT11;..\HARDWARE\HC05;..\HARDWARE\USART3;..\HARDWARE\RTC;..\HARDWARE\ADC;..\HARDWARE\DAC;..\HARDWARE\PWM_DAC;..\HARDWARE\ADC3;..\HARDWARE\LSENS;..\HARDWARE\TPAD;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\HARDWARE\TOUCH;..\SOFTWARE\GRAPHIC;..\HARDWARE\RNG;..\HARDWARE\REMOTE;..\HARDWARE\CAN;..\HARDWARE\STMFLASH;..\SOFTWARE\REMOTECTRL;..\HARDWARE\STMFLASH;..\HARDWARE\SPI;..\HARDWARE\W25QXX;..\SOFTWARE\BLUETOOTH;..\HARDWARE\RS485;..\HARDWARE\SRAM</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\FWLIB\inc;..\HARDWARE\LED;..\HARDWARE\BEEP;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\LCD;..\HARDWARE\TIMER;..\HARDWARE\RNG;..\HARDWARE\PWM;..\HARDWARE\DHT11;..\HARDWARE\HC05;..\HARDWARE\USART3;..\HARDWARE\RTC;..\HARDWARE\ADC;..\HARDWARE\DAC;..\HARDWARE\PWM_DAC;..\HARDWARE\ADC3;..\HARDWARE\LSENS;..\HARDWARE\TPAD;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\HARDWARE\TOUCH;..\SOFTWARE\GRAPHIC;..\HARDWARE\RNG;..\HARDWARE\REMOTE;..\HARDWARE\CAN;..\HARDWARE\STMFLASH;..\SOFTWARE\REMOTECTRL;..\HARDWARE\STMFLASH;..\HARDWARE\SPI;..\HARDWARE\W25QXX;..\SOFTWARE\BLUETOOTH;..\HARDWARE\RS485;..\HARDWARE\SRAM;..\USMART;..\MALLOC</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -800,6 +800,36 @@
               <FileName>bluetooth.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SOFTWARE\BLUETOOTH\bluetooth.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>USMART</GroupName>
+          <Files>
+            <File>
+              <FileName>usmart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USMART\usmart.c</FilePath>
+            </File>
+            <File>
+              <FileName>usmart_config.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USMART\usmart_config.c</FilePath>
+            </File>
+            <File>
+              <FileName>usmart_str.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\USMART\usmart_str.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>MALLOC</GroupName>
+          <Files>
+            <File>
+              <FileName>malloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\MALLOC\malloc.c</FilePath>
             </File>
           </Files>
         </Group>

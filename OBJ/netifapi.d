@@ -1,0 +1,9 @@
+..\OBJ\netifapi.o: ..\LWIP\lwip-1.4.1\src\api\netifapi.c
+..\OBJ\netifapi.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
+..\OBJ\netifapi.o: ..\LWIP\lwip_app\lwip_comm\lwipopts.h
+..\OBJ\netifapi.o: ..\LWIP\lwip-1.4.1\src\include\lwip/debug.h
+..\OBJ\netifapi.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
+..\OBJ\netifapi.o: ..\LWIP\arch/cc.h
+..\OBJ\netifapi.o: ..\LWIP\arch/cpu.h
+..\OBJ\netifapi.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
+..\OBJ\netifapi.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

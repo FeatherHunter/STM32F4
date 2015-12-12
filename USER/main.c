@@ -2,7 +2,8 @@
 #include "stm32f4xx.h"
 #include "usart.h"
 #include "delay.h"
-#include "stdio.h"
+#include <stdio.h>
+#include <string.h>
 
 #include "led.h"
 #include "beep.h"
@@ -42,6 +43,20 @@
 #include "sdio_sdcard.h"
 #include "ff.h"
 #include "exfuns.h"
+//#include "font.h"
+#include "text.h"
+#include "piclib.h"
+#include "common.h"
+
+//FWIP
+#include "netif.h"
+#include "lwip_comm.h"
+#include "lwipopts.h"
+#include "tcp_client_demo.h"
+#include "tcp_client_demo.h"
+#include "tcp_server_demo.h"
+#include "udp_demo.h"
+#include "httpd.h"
 
 /********定义变量 FATFS*********/
 FIL fil;
@@ -81,6 +96,11 @@ void show_sdcard_info(void)
 int main(void)
 {
 	u8 itouch;
+	u8 res;
+	u8 * fn;
+	u8 * pname;
+	DIR picdir;
+	FILINFO picfileinfo;
 	//u8 temp = 0, humi = 0;
 	u32 data_rng;
 	//u8 role = 0xFF;
@@ -127,6 +147,10 @@ int main(void)
   //////////////////////////////////////////////////////////////////////////////
 	//TIM5_CH1_Cap_Init(0XFFFFFFFF, 84-1); //84MHz/84 = 1Mhz 1Mhz/500 = 2Khz  ==IC==
 	///////////////////////////////////////////////////////////////////////////////
+	piclib_init();
+	picfileinfo.lfsize = _MAX_LFN * 2 + 1;
+	picfileinfo.lfname = mymalloc(SRAMIN, picfileinfo.lfsize);
+	pname = mymalloc(SRAMIN, picfileinfo.lfsize);
 	if(tp_dev.touchtype & 0x80)
 	{
 		while(1)
@@ -137,6 +161,23 @@ int main(void)
 				gui_draw_dialog(10, 10, 200, 28, 24, (u8 *)"LED0", BLUE, RED);
 				gui_draw_dialog(10+200, 10, 200, 28, 24, (u8 *)"RNG", BLUE, RED);
 				gui_draw_dialog(10, 38, 200, 28, 24, (u8 *)"Infrared Contrl", BLUE, RED);
+				
+				res = f_opendir(&picdir, (const TCHAR*)"0:/PICTURE"); //打开目录
+				if(res == FR_OK)
+				{
+						res = f_readdir(&picdir, &picfileinfo);
+						fn = (u8 *)(*picfileinfo.lfname?picfileinfo.lfname:picfileinfo.fname);
+					  res = f_typetell(fn);
+						if((res&0xF0) == 0x50)//判断是不是图片
+						{
+							strcpy((char *)pname, "0:/PICTURE/");
+							strcat((char *)pname, (const char *)fn);
+							ai_load_picfile(pname, 50, 50, 100, 100, 1);
+							Show_Str(2,2,240,16,pname,16,1); 				//显示图片名字
+						}
+				}
+				myfree(SRAMIN, pname);
+				
 				flush_key = 0;
 			}
 			tp_dev.scan(0);
@@ -257,6 +298,12 @@ void functions_init()
 {
 	u32 total, free;
 	u8 hc05_role;
+	u8 res;
+	
+	u8 eth_speed;
+	u8 eth_buf[30];
+
+	LCD_Clear(BLACK);
 	
 	LED_Init();            //LED
 	LCD_Init();            //LCD
@@ -265,133 +312,135 @@ void functions_init()
 	POINT_COLOR = BRRED;
 	LCD_ShowString(10+100,0, 24*20, 24, 24, "WELCOME to My Life");
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*1, 200, 24, 24, "LCD");
+	LCD_ShowString(10,16*1, 200, 16, 16, "LCD");
 	sprintf((char *)lcd_id, "ID: %x", lcddev.id);
-	LCD_ShowString(200,24*1, 200, 24, 24, lcd_id);
+	LCD_ShowString(330,16*1, 200, 16, 16, lcd_id);
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*1, 200, 24, 24, "OK");
+	LCD_ShowString(400,16*1, 200, 16, 16, "OK");
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*2, 200, 24, 24, "RNG");
+	LCD_ShowString(10,16*2, 200, 16, 16, "RNG");
 	POINT_COLOR = RED;
 	while(RNG_Init())      //RNG
 	{
-		LCD_ShowString(400,24*2, 200, 24, 24, "NO");
+		LCD_ShowString(400,16*2, 200, 16, 16, "NO");
 	}
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*2, 200, 24, 24, "OK");
+	LCD_ShowString(400,16*2, 200, 16, 16, "OK");
   POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*3, 200, 24, 24, "LED");
-	LCD_ShowString(10,24*4, 200, 24, 24, "KEY");
+	LCD_ShowString(10,16*3, 200, 16, 16, "LED");
+	LCD_ShowString(10,16*4, 200, 16, 16, "KEY");
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*3, 200, 24, 24, "OK");
-	LCD_ShowString(400,24*4, 200, 24, 24, "OK");
+	LCD_ShowString(400,16*3, 200, 16, 16, "OK");
+	LCD_ShowString(400,16*4, 200, 16, 16, "OK");
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*5, 200, 24, 24, "TOUCH");
+	LCD_ShowString(10,16*5, 200, 16, 16, "TOUCH");
 	POINT_COLOR = RED;
 	while(tp_dev.init()) //触摸屏初始化
 	{
-		LCD_ShowString(400,24*5, 200, 24, 24, "NO");
+		LCD_ShowString(400,16*5, 200, 16, 16, "NO");
 	}
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*5, 200, 24, 24, "OK");
+	LCD_ShowString(400,16*5, 200, 16, 16, "OK");
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*6, 200, 24, 24, "RTC");
+	LCD_ShowString(10,16*6, 200, 16, 16, "RTC");
 	My_RTC_Init(); //RTC Init
 	RTC_Set_WakeUp(RTC_WakeUpClock_CK_SPRE_16bits, 0); //配置WAKE UP中断,1秒钟中断一次
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*6, 200, 24, 24, "OK"); 
+	LCD_ShowString(400,16*6, 200, 16, 16, "OK"); 
 
 	Adc_Init();	  //ADC 初始化
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*7, 200, 24, 24, "ADC");
+	LCD_ShowString(10,16*7, 200, 16, 16, "ADC");
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*7, 200, 24, 24, "OK");	
+	LCD_ShowString(400,16*7, 200, 16, 16, "OK");	
 	
 	Remote_Init();                                 //Infrared Remote Control
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*8, 200, 24, 24, "Infrared");
+	LCD_ShowString(10,16*8, 200, 16, 16, "Infrared");
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*8, 200, 24, 24, "OK");
+	LCD_ShowString(400,16*8, 200, 16, 16, "OK");
 	
 	CanMode = CAN_Mode_LoopBack;
 	CAN1_Mode_Init(CAN_SJW_1tq, CAN_BS2_6tq, CAN_BS1_7tq, 6, CanMode);//回环模式
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*9, 200, 24, 24, "Can");
+	LCD_ShowString(10,16*9, 200, 16, 16, "Can");
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*9, 200, 24, 24, "OK");
+	LCD_ShowString(400,16*9, 200, 16, 16, "OK");
 	POINT_COLOR = MAGENTA;
 	if(CanMode == CAN_Mode_LoopBack)
 	{
-		LCD_ShowString(240,24*5, 200, 24, 24, "LoopBack");
+		LCD_ShowString(240,16*5, 200, 16, 16, "LoopBack");
 	}
 	else
 	{
-		LCD_ShowString(240,24*5, 200, 24, 24, "Normal");
+		LCD_ShowString(240,16*5, 200, 16, 16, "Normal");
 	}
   /*beep init*/
 	BEEP_Init();
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*10, 200, 24, 24, "BEEP");
+	LCD_ShowString(10,16*10, 200, 16, 16, "BEEP");
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*10, 200, 24, 24, "OK");	
+	LCD_ShowString(400,16*10, 200, 16, 16, "OK");	
 	
 	/*w25qxx init*/
 	W25QXX_Init();
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*11, 200, 24, 24, "SPI FLASH");
+	LCD_ShowString(10,16*11, 200, 16, 16, "SPI FLASH");
 	while(W25QXX_ReadID() != W25Q128)
 	{
 		POINT_COLOR = RED;
-		LCD_ShowString(24*7+2,24*11, 24*11, 24, 24,  " W25Q128 Check Failed");
+		LCD_ShowString(170,16*11, 240, 16, 16,  " W25Q128 Check Failed");
 		delay_ms(250);
-		LCD_ShowString(24*7+2,24*11, 24*11, 24, 24,  " Please Check .......");
+		LCD_ShowString(170,16*11, 240, 16, 16,  " Please Check .......");
 		delay_ms(250);
 	}
 	POINT_COLOR = GREEN;
-	LCD_ShowString(24*7+2,24*11, 24*101, 24, 24,   "                   OK");	
+	LCD_ShowString(170,16*11, 240, 16, 16,   "                     ");	
+	LCD_ShowString(400,16*11, 200, 16, 16, "OK");
 	
 	
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*12, 200, 24, 24, "HC05");
+	LCD_ShowString(10,16*12, 200, 16, 16, "HC05");
 	while(HC05_Init())     //9600 baund HC05
 	{
 		POINT_COLOR = RED;
-		LCD_ShowString(24*7+2,24*12, 24*11, 24, 24,  " HC05 Check Failed");
+		LCD_ShowString(170,16*12, 240, 16, 16,  " HC05 Check Failed");
 		delay_ms(250);
-		LCD_ShowString(24*7+2,24*12, 24*11, 24, 24,  " Please Check ....");
+		LCD_ShowString(170,16*12, 240, 16, 16,  " Please Check ....");
 		delay_ms(250);
 	}
 	POINT_COLOR = GREEN;
-	LCD_ShowString(24*7+2,24*12, 24*101, 24, 24,   "                   OK");
+	LCD_ShowString(170,16*12, 240, 16, 16,   "                     ");	
+	LCD_ShowString(400,16*12, 200, 16, 16, "OK");
 	hc05_role = HC05_Get_Role();
 	POINT_COLOR = BLUE;
 	if(hc05_role == 1) 
 	{
-		LCD_ShowString(300,24*12, 200, 24, 24,  "MASTER");
+		LCD_ShowString(300,16*12, 200, 16, 16,  "MASTER");
 	}
 	else if(hc05_role == 0)
 	{
-		LCD_ShowString(300,24*12, 200, 24, 24,  "SLAVE");
+		LCD_ShowString(300,16*12, 200, 16, 16,  "SLAVE");
 	}
 	else
 	{
 		POINT_COLOR = RED;
-		LCD_ShowString(300,24*12, 200, 24, 24,  "0xFF");
+		LCD_ShowString(300,16*12, 200, 16, 16,  "0xFF");
 	}
 	
 	/*RS485 init*/
 	RS485_Init(9600);
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*13, 200, 24, 24, "RS485");
+	LCD_ShowString(10,16*13, 200, 16, 16, "RS485");
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*13, 200, 24, 24, "OK");	
+	LCD_ShowString(400,16*13, 200, 16, 16, "OK");	
 	
 	/*FSMC SRAM*/
 	FSMC_SRAM_Init();
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*14, 200, 24, 24, "FSMC SRAM");
+	LCD_ShowString(10,16*14, 200, 16, 16, "FSMC SRAM");
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*14, 200, 24, 24, "OK");
+	LCD_ShowString(400,16*14, 200, 16, 16, "OK");
 	
 	/*MEM MANEGEMENT*/
 	my_mem_init(SRAMIN);
@@ -399,23 +448,24 @@ void functions_init()
 	my_mem_init(SRAMCCM);
 	
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*15, 200, 24, 24, "MEM MANEGEMENT");
+	LCD_ShowString(10,16*15, 200, 16, 16, "MEM MANEGEMENT");
 	POINT_COLOR = GREEN;
-	LCD_ShowString(400,24*15, 200, 24, 24, "OK");
+	LCD_ShowString(400,16*15, 200, 16, 16, "OK");
 	
 	/*SD CARD*/
 	POINT_COLOR = BLUE;
-	LCD_ShowString(10,24*16, 200, 24, 24, "SD CARD");
+	LCD_ShowString(10,16*16, 200, 16, 16, "SD CARD");
 	while(SD_Init())//检测不到SD卡
 	{
 		POINT_COLOR = RED;
-		LCD_ShowString(24*7+2,24*16, 24*11, 24, 24,  " SD Card Error!   ");
+		LCD_ShowString(170,16*16, 240, 16, 16,  " SD Card Error!   ");
 		delay_ms(500);					
-		LCD_ShowString(24*7+2,24*16, 24*11, 24, 24,  " Please Check ....");
+		LCD_ShowString(170,16*16, 240, 16, 16,  " Please Check ....");
 		delay_ms(500);
 	}
 	POINT_COLOR = GREEN;
-	LCD_ShowString(24*7+2,24*16, 24*101, 24, 24,   "                   OK");
+	LCD_ShowString(170,16*16, 240, 16, 16,   "                     ");	
+	LCD_ShowString(400,16*16, 200, 16, 16, "OK");
 	show_sdcard_info();	//打印SD卡相关信息
 	
 	/****FATFS***/
@@ -424,31 +474,93 @@ void functions_init()
 	res = f_mount(fs[1], "1:", 1);   //挂载flash
 	if(res==0X0D)//FLASH磁盘,FAT文件系统错误,重新格式化FLASH
 	{
-		LCD_ShowString(10,24*17, 200, 24, 24,"Flash Disk Formatting...");	//格式化FLASH
+		LCD_ShowString(10,16*17, 200, 16, 16,"Flash Disk Formatting...");	//格式化FLASH
 		res=f_mkfs("1:",1,4096);//格式化FLASH,1,盘符;1,不需要引导区,8个扇区为1个簇
 		if(res==0)
 		{
 			f_setlabel((const TCHAR *)"1:ALIENTEK");	//设置Flash磁盘的名字为：ALIENTEK
-			LCD_ShowString(10,24*17, 200, 24, 24,    "Flash Disk Format Finish");	//格式化完成
-		}else LCD_ShowString(10,24*17, 200, 24, 24,"Flash Disk Format Error ");	//格式化失败
+			LCD_ShowString(10,16*17, 200, 16, 16,    "Flash Disk Format Finish");	//格式化完成
+		}else LCD_ShowString(10,16*17, 200, 16, 16,"Flash Disk Format Error ");	//格式化失败
 		delay_ms(1000);
 	}													    
-	LCD_ShowString(10,24*17, 200, 24, 24,        "                        ");	//清空			  
+	LCD_ShowString(10,16*17, 200, 16, 16,        "                        ");	//清空			  
 	while(exf_getfree("0",&total,&free))	//得到SD卡的总容量和剩余容量
 	{
-		LCD_ShowString(30,24*17,200,16,16,"SD Card Fatfs Error!");
+		LCD_ShowString(30,16*17,200,16,16,"SD Card Fatfs Error!");
 		delay_ms(200);
-		LCD_Fill(30,24*17,240,24*17+16,WHITE);	//清除显示			  
+		LCD_Fill(30,16*17,240,16*17+16,WHITE);	//清除显示			  
 		delay_ms(200);
 		LED0=!LED0;//DS0闪烁
 	}													  			    
- 	POINT_COLOR=BLUE;//设置字体为蓝色	   
-	LCD_ShowString(30,24*17,200,16,16,"FATFS OK!");	 
-	LCD_ShowString(30,24*17+20,200,16,16,"SD Total Size:     MB");	 
-	LCD_ShowString(30,24*17+40,200,16,16,"SD  Free Size:     MB"); 	    
- 	LCD_ShowNum(30+8*14,24*17+20,total>>10,5,16);				//显示SD卡总容量 MB
- 	LCD_ShowNum(30+8*14,24*17+40,free>>10,5,16);					//显示SD卡剩余容量 MB		
+ 	POINT_COLOR=BLUE;//设置字体为蓝色	  
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,16*17, 200, 16, 16, "FATFS");
+	POINT_COLOR = GREEN;
+	LCD_ShowString(400,16*17, 200, 16, 16, "OK");	
+	POINT_COLOR = BLACK;
+	LCD_ShowString(10,16*18,200,16,16,"SD Total Size:     MB");	 
+	LCD_ShowString(10,16*19,200,16,16,"SD  Free Size:     MB"); 	
+	POINT_COLOR = MAGENTA;	
+ 	LCD_ShowNum(10+8*14,16*18,total>>10,5,16);				//显示SD卡总容量 MB
+ 	LCD_ShowNum(10+8*14,16*19,free>>10,5,16);					//显示SD卡剩余容量 MB		
 	
+	/*font prepare*/
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,16*20, 200, 16, 16, "FONT");
+	while(font_init())//检测不到font
+	{
+		POINT_COLOR = RED;
+		LCD_ShowString(170,16*20, 240, 16, 16,  "FONT     Error!   ");
+		delay_ms(500);					
+		LCD_ShowString(170,16*20, 240, 16, 16,  " Please Check ....");
+		delay_ms(500);
+	}
+	POINT_COLOR = GREEN;
+	Show_Str(300,16*20, 240, 16, "     字库初始化成功", 16, 0);
+	
+	/* ATK-RM04 */
+	/*
+	atk_rm04_init();
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,24*21, 200, 24, 24, "ATK-RM04");
+	POINT_COLOR = GREEN;
+	LCD_ShowString(400,24*21, 200, 24, 24, "OK");
+	*/
+	
+	/*Init LWIP*/
+	TIM3_Int_Init(999,839); //100khz的频率,计数1000为10ms
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,16*21, 200, 16, 16, "lwIP Init");
+	while(lwip_comm_init()!=0) //先初始化lwIP(包括LAN8720初始化),此时必须插上网线,否则初始化会失败!! 
+	{
+		POINT_COLOR = RED;
+		LCD_ShowString(200,16*21, 200, 16, 16, "lwIP Init failed!");
+		delay_ms(1200);
+		LCD_Fill(200,16*21, 400,16*21+16,WHITE);//清除显示
+		LCD_ShowString(200,16*21, 200, 16, 16,"Retrying...");  
+	}
+	LCD_Fill(200,16*21, 400,16*21+16,WHITE);//清除显示
+	POINT_COLOR = GREEN;
+	LCD_ShowString(350,16*21, 200, 16, 16,"Successed");
+	//等待DHCP获取 
+	POINT_COLOR = BLUE;
+	LCD_ShowString(10,16*22, 200, 16, 16, "DHCP IP config");
+	while((lwipdev.dhcpstatus!=2)&&(lwipdev.dhcpstatus!=0XFF))//等待DHCP获取成功/超时溢出
+	{
+		lwip_periodic_handle();
+	}
+	POINT_COLOR = GREEN;
+	LCD_ShowString(350,16*22, 200, 16, 16,"Successed");
+	if(lwipdev.dhcpstatus==2)sprintf((char*)eth_buf,"DHCP IP:%d.%d.%d.%d",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印动态IP地址
+	else sprintf((char*)eth_buf,"Static IP:%d.%d.%d.%d",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//打印静态IP地址
+	LCD_ShowString(10,16*23, 200, 16, 16,eth_buf); 
+	eth_speed=LAN8720_Get_Speed();										//得到网速
+	POINT_COLOR = BLACK;
+	if(eth_speed&1<<1)LCD_ShowString(10,16*23, 200, 16, 16,"Ethernet Speed:100M   ");
+	else LCD_ShowString(10,16*23, 200, 16, 16,"Ethernet Speed:10M   "); 
+	//httpd_init();	//HTTP初始化(默认开启websever)
+	
+	while(1);
 	delay_ms(15000);
 
 }

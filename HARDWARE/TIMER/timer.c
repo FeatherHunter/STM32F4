@@ -12,6 +12,7 @@
 
 #include "timer.h"
 #include "led.h"
+#include "lwip_comm.h"
 
 //=======================================================
 //                     TIM3
@@ -51,6 +52,7 @@ void TIM3_Int_Init(u16 arr,u16 psc)
 	
 }
 
+extern u32 lwip_localtime;
 /**
  * @Function    void TIM3_IRQHandler(void);
  * @description TIM3中断服务程序 
@@ -59,7 +61,7 @@ void TIM3_IRQHandler(void)
 {
 	if(TIM_GetITStatus(TIM3,TIM_IT_Update)==SET) //溢出中断
 	{
-		LED1=!LED1;//DS1翻转
+		lwip_localtime +=10; //加10
 	}
 	TIM_ClearITPendingBit(TIM3,TIM_IT_Update);  //清除中断标志位
 }

@@ -1,0 +1,9 @@
+..\OBJ\sockets.o: ..\LWIP\lwip-1.4.1\src\api\sockets.c
+..\OBJ\sockets.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
+..\OBJ\sockets.o: ..\LWIP\lwip_app\lwip_comm\lwipopts.h
+..\OBJ\sockets.o: ..\LWIP\lwip-1.4.1\src\include\lwip/debug.h
+..\OBJ\sockets.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
+..\OBJ\sockets.o: ..\LWIP\arch/cc.h
+..\OBJ\sockets.o: ..\LWIP\arch/cpu.h
+..\OBJ\sockets.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
+..\OBJ\sockets.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

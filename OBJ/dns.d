@@ -1,0 +1,9 @@
+..\OBJ\dns.o: ..\LWIP\lwip-1.4.1\src\core\dns.c
+..\OBJ\dns.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
+..\OBJ\dns.o: ..\LWIP\lwip_app\lwip_comm\lwipopts.h
+..\OBJ\dns.o: ..\LWIP\lwip-1.4.1\src\include\lwip/debug.h
+..\OBJ\dns.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
+..\OBJ\dns.o: ..\LWIP\arch/cc.h
+..\OBJ\dns.o: ..\LWIP\arch/cpu.h
+..\OBJ\dns.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
+..\OBJ\dns.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

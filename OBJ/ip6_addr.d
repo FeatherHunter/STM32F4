@@ -1,0 +1,12 @@
+..\OBJ\ip6_addr.o: ..\LWIP\lwip-1.4.1\src\core\ipv6\ip6_addr.c
+..\OBJ\ip6_addr.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
+..\OBJ\ip6_addr.o: ..\LWIP\lwip_app\lwip_comm\lwipopts.h
+..\OBJ\ip6_addr.o: ..\LWIP\lwip-1.4.1\src\include\lwip/debug.h
+..\OBJ\ip6_addr.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
+..\OBJ\ip6_addr.o: ..\LWIP\arch/cc.h
+..\OBJ\ip6_addr.o: ..\LWIP\arch/cpu.h
+..\OBJ\ip6_addr.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
+..\OBJ\ip6_addr.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
+..\OBJ\ip6_addr.o: ..\LWIP\lwip-1.4.1\src\include\ipv4\lwip/ip_addr.h
+..\OBJ\ip6_addr.o: ..\LWIP\lwip-1.4.1\src\include\lwip/def.h
+..\OBJ\ip6_addr.o: ..\LWIP\lwip-1.4.1\src\include\ipv4\lwip/inet.h

@@ -1,0 +1,9 @@
+..\OBJ\api_lib.o: ..\LWIP\lwip-1.4.1\src\api\api_lib.c
+..\OBJ\api_lib.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
+..\OBJ\api_lib.o: ..\LWIP\lwip_app\lwip_comm\lwipopts.h
+..\OBJ\api_lib.o: ..\LWIP\lwip-1.4.1\src\include\lwip/debug.h
+..\OBJ\api_lib.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
+..\OBJ\api_lib.o: ..\LWIP\arch/cc.h
+..\OBJ\api_lib.o: ..\LWIP\arch/cpu.h
+..\OBJ\api_lib.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
+..\OBJ\api_lib.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

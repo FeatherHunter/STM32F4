@@ -1,0 +1,9 @@
+..\OBJ\tcpip.o: ..\LWIP\lwip-1.4.1\src\api\tcpip.c
+..\OBJ\tcpip.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
+..\OBJ\tcpip.o: ..\LWIP\lwip_app\lwip_comm\lwipopts.h
+..\OBJ\tcpip.o: ..\LWIP\lwip-1.4.1\src\include\lwip/debug.h
+..\OBJ\tcpip.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
+..\OBJ\tcpip.o: ..\LWIP\arch/cc.h
+..\OBJ\tcpip.o: ..\LWIP\arch/cpu.h
+..\OBJ\tcpip.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
+..\OBJ\tcpip.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
