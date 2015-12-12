@@ -42,7 +42,7 @@ struct tcp_client_struct
 };  
 
 void tcp_client_set_remoteip(void);
-void tcp_client_test(void);//TCP Client²âÊÔº¯Êý
+void tcp_client_test(u8 * connect_flag, u8 * login, struct tcp_pcb **tcppcb, struct ip_addr *rmtipaddr);//TCP Client²âÊÔº¯Êý
 err_t tcp_client_connected(void *arg, struct tcp_pcb *tpcb, err_t err);
 err_t tcp_client_recv(void *arg,struct tcp_pcb *tpcb,struct pbuf *p,err_t err);
 void tcp_client_error(void *arg,err_t err);
@@ -51,6 +51,7 @@ err_t tcp_client_sent(void *arg, struct tcp_pcb *tpcb, u16_t len);
 void tcp_client_senddata(struct tcp_pcb *tpcb, struct tcp_client_struct * es);
 void tcp_client_connection_close(struct tcp_pcb *tpcb, struct tcp_client_struct * es );
 
+extern u8 *tcp_client_sendbuf;
 #endif
 
 

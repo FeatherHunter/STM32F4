@@ -96,6 +96,8 @@ void show_sdcard_info(void)
 int main(void)
 {
 	u8 itouch;
+	u8 connect_flag = 0;
+	u8 login_flag = 0;
 	u8 res;
 	u8 * fn;
 	u8 * pname;
@@ -104,6 +106,9 @@ int main(void)
 	//u8 temp = 0, humi = 0;
 	u32 data_rng;
 	//u8 role = 0xFF;
+	
+	struct tcp_pcb *tcppcb;  	//定义一个TCP服务器控制块
+	struct ip_addr rmtipaddr;  	//远端ip地址
 	
 	u8 RTC_DBUF[20];
 	u8 RTC_TBUF[20];
@@ -148,9 +153,11 @@ int main(void)
 	//TIM5_CH1_Cap_Init(0XFFFFFFFF, 84-1); //84MHz/84 = 1Mhz 1Mhz/500 = 2Khz  ==IC==
 	///////////////////////////////////////////////////////////////////////////////
 	piclib_init();
-	picfileinfo.lfsize = _MAX_LFN * 2 + 1;
-	picfileinfo.lfname = mymalloc(SRAMIN, picfileinfo.lfsize);
-	pname = mymalloc(SRAMIN, picfileinfo.lfsize);
+	tcp_client_sendbuf = mymalloc(SRAMIN, 100);
+	//picfileinfo.lfsize = _MAX_LFN * 2 + 1;
+	//picfileinfo.lfname = mymalloc(SRAMIN, picfileinfo.lfsize);
+	//pname = mymalloc(SRAMIN, picfileinfo.lfsize);
+	
 	if(tp_dev.touchtype & 0x80)
 	{
 		while(1)
@@ -162,6 +169,7 @@ int main(void)
 				gui_draw_dialog(10+200, 10, 200, 28, 24, (u8 *)"RNG", BLUE, RED);
 				gui_draw_dialog(10, 38, 200, 28, 24, (u8 *)"Infrared Contrl", BLUE, RED);
 				
+				/*
 				res = f_opendir(&picdir, (const TCHAR*)"0:/PICTURE"); //打开目录
 				if(res == FR_OK)
 				{
@@ -177,6 +185,7 @@ int main(void)
 						}
 				}
 				myfree(SRAMIN, pname);
+				*/
 				
 				flush_key = 0;
 			}
@@ -289,7 +298,8 @@ int main(void)
 		//printf("year:%d month:%d date%d week%d\n", RTC_DateStruct.RTC_Year, RTC_DateStruct.RTC_Month, RTC_DateStruct.RTC_Date, RTC_DateStruct.RTC_WeekDay);
 	  //RTC_GetTime(RTC_Format_BIN, &RTC_TimeStruct);
 		////////////////////////////////////////////////////////
-	  
+		tcp_client_test(&connect_flag, &login_flag, &tcppcb, &rmtipaddr);
+			
 		}//end of while
 	}//end of else
 }
@@ -301,7 +311,7 @@ void functions_init()
 	u8 res;
 	
 	u8 eth_speed;
-	u8 eth_buf[30];
+	u8 eth_buf[50];
 
 	LCD_Clear(BLACK);
 	
@@ -560,8 +570,17 @@ void functions_init()
 	else LCD_ShowString(10,16*23, 200, 16, 16,"Ethernet Speed:10M   "); 
 	//httpd_init();	//HTTP初始化(默认开启websever)
 	
-	while(1);
-	delay_ms(15000);
+	/*set up tcp/ip*/
+	lwipdev.remoteip[0] = 192;
+	lwipdev.remoteip[1] = 168;
+	lwipdev.remoteip[2] = 16;
+	lwipdev.remoteip[3] = 107;
+	sprintf((char*)eth_buf,"Local IP:%d.%d.%d.%d",lwipdev.ip[0],lwipdev.ip[1],lwipdev.ip[2],lwipdev.ip[3]);//本地IP
+	LCD_ShowString(10,16*24, 200, 16, 16,eth_buf);  
+	sprintf((char*)eth_buf,"Remote IP:%d.%d.%d.%d",lwipdev.remoteip[0],lwipdev.remoteip[1],lwipdev.remoteip[2],lwipdev.remoteip[3]);//远端IP
+	LCD_ShowString(10,16*25, 200, 16, 16,eth_buf);  
+	sprintf((char*)eth_buf,"Remote Port:%d",TCP_CLIENT_PORT);//客户端端口号
+	LCD_ShowString(10,16*26, 200, 16, 16,eth_buf);
 
 }
 #endif
