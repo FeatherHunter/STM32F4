@@ -49,6 +49,7 @@
 #include "common.h"
 
 //FWIP
+/*
 #include "netif.h"
 #include "lwip_comm.h"
 #include "lwipopts.h"
@@ -57,6 +58,7 @@
 #include "tcp_server_demo.h"
 #include "udp_demo.h"
 #include "httpd.h"
+*/
 
 /********定义变量 FATFS*********/
 FIL fil;
@@ -107,8 +109,8 @@ int main(void)
 	u32 data_rng;
 	//u8 role = 0xFF;
 	
-	struct tcp_pcb *tcppcb;  	//定义一个TCP服务器控制块
-	struct ip_addr rmtipaddr;  	//远端ip地址
+	//struct tcp_pcb *tcppcb;  	//定义一个TCP服务器控制块
+	//struct ip_addr rmtipaddr;  	//远端ip地址
 	
 	u8 RTC_DBUF[20];
 	u8 RTC_TBUF[20];
@@ -153,7 +155,7 @@ int main(void)
 	//TIM5_CH1_Cap_Init(0XFFFFFFFF, 84-1); //84MHz/84 = 1Mhz 1Mhz/500 = 2Khz  ==IC==
 	///////////////////////////////////////////////////////////////////////////////
 	piclib_init();
-	tcp_client_sendbuf = mymalloc(SRAMIN, 100);
+	//tcp_client_sendbuf = mymalloc(SRAMIN, 100);
 	//picfileinfo.lfsize = _MAX_LFN * 2 + 1;
 	//picfileinfo.lfname = mymalloc(SRAMIN, picfileinfo.lfsize);
 	//pname = mymalloc(SRAMIN, picfileinfo.lfsize);
@@ -298,7 +300,7 @@ int main(void)
 		//printf("year:%d month:%d date%d week%d\n", RTC_DateStruct.RTC_Year, RTC_DateStruct.RTC_Month, RTC_DateStruct.RTC_Date, RTC_DateStruct.RTC_WeekDay);
 	  //RTC_GetTime(RTC_Format_BIN, &RTC_TimeStruct);
 		////////////////////////////////////////////////////////
-		tcp_client_test(&connect_flag, &login_flag, &tcppcb, &rmtipaddr);
+		//tcp_client_test(&connect_flag, &login_flag, &tcppcb, &rmtipaddr);
 			
 		}//end of while
 	}//end of else
@@ -538,6 +540,7 @@ void functions_init()
 	*/
 	
 	/*Init LWIP*/
+#if 0
 	TIM3_Int_Init(999,839); //100khz的频率,计数1000为10ms
 	POINT_COLOR = BLUE;
 	LCD_ShowString(10,16*21, 200, 16, 16, "lwIP Init");
@@ -569,6 +572,7 @@ void functions_init()
 	if(eth_speed&1<<1)LCD_ShowString(10,16*23, 200, 16, 16,"Ethernet Speed:100M   ");
 	else LCD_ShowString(10,16*23, 200, 16, 16,"Ethernet Speed:10M   "); 
 	//httpd_init();	//HTTP初始化(默认开启websever)
+
 	
 	/*set up tcp/ip*/
 	lwipdev.remoteip[0] = 192;
@@ -581,6 +585,6 @@ void functions_init()
 	LCD_ShowString(10,16*25, 200, 16, 16,eth_buf);  
 	sprintf((char*)eth_buf,"Remote Port:%d",TCP_CLIENT_PORT);//客户端端口号
 	LCD_ShowString(10,16*26, 200, 16, 16,eth_buf);
-
+#endif
 }
 #endif

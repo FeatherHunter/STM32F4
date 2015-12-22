@@ -5,5 +5,7 @@
 ..\OBJ\autoip.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\autoip.o: ..\LWIP\arch/cc.h
 ..\OBJ\autoip.o: ..\LWIP\arch/cpu.h
+..\OBJ\autoip.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\autoip.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\autoip.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\autoip.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

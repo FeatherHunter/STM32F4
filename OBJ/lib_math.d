@@ -1,0 +1,12 @@
+..\OBJ\lib_math.o: ..\UCOSIII\uC-LIB\lib_math.c
+..\OBJ\lib_math.o: ..\UCOSIII\uC-LIB\lib_math.h
+..\OBJ\lib_math.o: ..\LWIP\arch\cpu.h
+..\OBJ\lib_math.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\lib_math.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
+..\OBJ\lib_math.o: ..\UCOSIII\uC-CPU\cpu_core.h
+..\OBJ\lib_math.o: ..\UCOSIII\uC-LIB\lib_def.h
+..\OBJ\lib_math.o: ..\UCOSIII\uC-LIB\lib_mem.h
+..\OBJ\lib_math.o: ..\UCOSIII\uC-CPU\cpu_core.h
+..\OBJ\lib_math.o: ..\UCOSIII\UCOS-CONFIG\lib_cfg.h
+..\OBJ\lib_math.o: ..\UCOSIII\uC-LIB\lib_str.h
+..\OBJ\lib_math.o: ..\UCOSIII\uC-LIB\lib_ascii.h

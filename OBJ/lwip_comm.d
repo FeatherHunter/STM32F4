@@ -46,6 +46,8 @@
 ..\OBJ\lwip_comm.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\lwip_comm.o: ..\LWIP\arch/cc.h
 ..\OBJ\lwip_comm.o: ..\LWIP\arch/cpu.h
+..\OBJ\lwip_comm.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\lwip_comm.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\lwip_comm.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\lwip_comm.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\lwip_comm.o: ..\LWIP\lwip-1.4.1\src\include\lwip/pbuf.h

@@ -5,5 +5,7 @@
 ..\OBJ\netbuf.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\netbuf.o: ..\LWIP\arch/cc.h
 ..\OBJ\netbuf.o: ..\LWIP\arch/cpu.h
+..\OBJ\netbuf.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\netbuf.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\netbuf.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\netbuf.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

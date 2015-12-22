@@ -5,5 +5,7 @@
 ..\OBJ\tcpip.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\tcpip.o: ..\LWIP\arch/cc.h
 ..\OBJ\tcpip.o: ..\LWIP\arch/cpu.h
+..\OBJ\tcpip.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\tcpip.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\tcpip.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\tcpip.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

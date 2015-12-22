@@ -40,6 +40,8 @@
 ..\OBJ\tcp_client_demo.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\tcp_client_demo.o: ..\LWIP\arch/cc.h
 ..\OBJ\tcp_client_demo.o: ..\LWIP\arch/cpu.h
+..\OBJ\tcp_client_demo.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\tcp_client_demo.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\tcp_client_demo.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\tcp_client_demo.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\tcp_client_demo.o: ..\LWIP\lwip_app\lwip_comm\lwipopts.h

@@ -1,0 +1,4 @@
+--cpu Cortex-M4.fp -g --apcs=interwork 
+-I D:\Keil_ARM\ARM\RV31\INC 
+-I D:\Keil_ARM\ARM\CMSIS\Include 
+--list "..\OBJ\os_cpu_a.lst" --xref -o "..\OBJ\os_cpu_a.o" --depend "..\OBJ\os_cpu_a.d" "..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu_a.asm"

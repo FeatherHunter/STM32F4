@@ -5,6 +5,8 @@
 ..\OBJ\dhcp.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\dhcp.o: ..\LWIP\arch/cc.h
 ..\OBJ\dhcp.o: ..\LWIP\arch/cpu.h
+..\OBJ\dhcp.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\dhcp.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\dhcp.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\dhcp.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\dhcp.o: ..\LWIP\lwip-1.4.1\src\include\lwip/stats.h

@@ -5,5 +5,7 @@
 ..\OBJ\sockets.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\sockets.o: ..\LWIP\arch/cc.h
 ..\OBJ\sockets.o: ..\LWIP\arch/cpu.h
+..\OBJ\sockets.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\sockets.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\sockets.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\sockets.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

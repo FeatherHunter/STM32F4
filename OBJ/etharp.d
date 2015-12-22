@@ -5,6 +5,8 @@
 ..\OBJ\etharp.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\etharp.o: ..\LWIP\arch/cc.h
 ..\OBJ\etharp.o: ..\LWIP\arch/cpu.h
+..\OBJ\etharp.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\etharp.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\etharp.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\etharp.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\etharp.o: ..\LWIP\lwip-1.4.1\src\include\ipv4\lwip/ip_addr.h

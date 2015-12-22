@@ -5,6 +5,8 @@
 ..\OBJ\ip_addr.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\ip_addr.o: ..\LWIP\arch/cc.h
 ..\OBJ\ip_addr.o: ..\LWIP\arch/cpu.h
+..\OBJ\ip_addr.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\ip_addr.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\ip_addr.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\ip_addr.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\ip_addr.o: ..\LWIP\lwip-1.4.1\src\include\ipv4\lwip/ip_addr.h

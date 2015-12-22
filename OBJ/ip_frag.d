@@ -5,6 +5,8 @@
 ..\OBJ\ip_frag.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\ip_frag.o: ..\LWIP\arch/cc.h
 ..\OBJ\ip_frag.o: ..\LWIP\arch/cpu.h
+..\OBJ\ip_frag.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\ip_frag.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\ip_frag.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\ip_frag.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\ip_frag.o: ..\LWIP\lwip-1.4.1\src\include\ipv4\lwip/ip_frag.h

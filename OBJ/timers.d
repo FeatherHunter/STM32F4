@@ -5,6 +5,8 @@
 ..\OBJ\timers.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\timers.o: ..\LWIP\arch/cc.h
 ..\OBJ\timers.o: ..\LWIP\arch/cpu.h
+..\OBJ\timers.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\timers.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\timers.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\timers.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\timers.o: ..\LWIP\lwip-1.4.1\src\include\lwip/timers.h

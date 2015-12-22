@@ -3,6 +3,8 @@
 ..\OBJ\httpd_cgi_ssi.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\httpd_cgi_ssi.o: ..\LWIP\arch/cc.h
 ..\OBJ\httpd_cgi_ssi.o: ..\LWIP\arch/cpu.h
+..\OBJ\httpd_cgi_ssi.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\httpd_cgi_ssi.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\httpd_cgi_ssi.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\httpd_cgi_ssi.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\httpd_cgi_ssi.o: ..\LWIP\lwip_app\lwip_comm\lwipopts.h

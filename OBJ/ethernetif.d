@@ -7,6 +7,8 @@
 ..\OBJ\ethernetif.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\ethernetif.o: ..\LWIP\arch/cc.h
 ..\OBJ\ethernetif.o: ..\LWIP\arch/cpu.h
+..\OBJ\ethernetif.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\ethernetif.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\ethernetif.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\ethernetif.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\ethernetif.o: ..\LWIP\lwip-1.4.1\src\include\lwip/netif.h

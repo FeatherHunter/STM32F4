@@ -5,6 +5,8 @@
 ..\OBJ\pbuf.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\pbuf.o: ..\LWIP\arch/cc.h
 ..\OBJ\pbuf.o: ..\LWIP\arch/cpu.h
+..\OBJ\pbuf.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\pbuf.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\pbuf.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\pbuf.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\pbuf.o: ..\LWIP\lwip-1.4.1\src\include\lwip/stats.h

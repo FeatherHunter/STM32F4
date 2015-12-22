@@ -5,5 +5,7 @@
 ..\OBJ\netifapi.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\netifapi.o: ..\LWIP\arch/cc.h
 ..\OBJ\netifapi.o: ..\LWIP\arch/cpu.h
+..\OBJ\netifapi.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\netifapi.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\netifapi.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\netifapi.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

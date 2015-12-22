@@ -5,6 +5,8 @@
 ..\OBJ\icmp.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\icmp.o: ..\LWIP\arch/cc.h
 ..\OBJ\icmp.o: ..\LWIP\arch/cpu.h
+..\OBJ\icmp.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\icmp.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\icmp.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\icmp.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\icmp.o: ..\LWIP\lwip-1.4.1\src\include\ipv4\lwip/icmp.h

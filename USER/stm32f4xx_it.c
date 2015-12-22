@@ -124,7 +124,7 @@ void SVC_Handler(void)
 void DebugMon_Handler(void)
 {
 }
-
+#if 0
 /**
   * @brief  This function handles PendSVC exception.
   * @param  None
@@ -143,6 +143,7 @@ void SysTick_Handler(void)
 {
  
 }
+#endif
 
 /******************************************************************************/
 /*                 STM32F4xx Peripherals Interrupt Handlers                   */

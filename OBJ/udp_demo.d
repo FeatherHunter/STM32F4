@@ -47,6 +47,8 @@
 ..\OBJ\udp_demo.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\udp_demo.o: ..\LWIP\arch/cc.h
 ..\OBJ\udp_demo.o: ..\LWIP\arch/cpu.h
+..\OBJ\udp_demo.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\udp_demo.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\udp_demo.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\udp_demo.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\udp_demo.o: ..\LWIP\lwip-1.4.1\src\include\lwip/err.h

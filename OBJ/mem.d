@@ -5,6 +5,8 @@
 ..\OBJ\mem.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\mem.o: ..\LWIP\arch/cc.h
 ..\OBJ\mem.o: ..\LWIP\arch/cpu.h
+..\OBJ\mem.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\mem.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\mem.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\mem.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\mem.o: ..\LWIP\lwip-1.4.1\src\include\lwip/def.h

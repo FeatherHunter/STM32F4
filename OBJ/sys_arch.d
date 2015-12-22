@@ -3,6 +3,8 @@
 ..\OBJ\sys_arch.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\sys_arch.o: ..\LWIP\arch/cc.h
 ..\OBJ\sys_arch.o: ..\LWIP\arch/cpu.h
+..\OBJ\sys_arch.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\sys_arch.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\sys_arch.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\sys_arch.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\sys_arch.o: ..\LWIP\lwip_app\lwip_comm\lwipopts.h

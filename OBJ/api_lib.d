@@ -5,5 +5,7 @@
 ..\OBJ\api_lib.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\api_lib.o: ..\LWIP\arch/cc.h
 ..\OBJ\api_lib.o: ..\LWIP\arch/cpu.h
+..\OBJ\api_lib.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\api_lib.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\api_lib.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\api_lib.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h

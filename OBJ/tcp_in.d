@@ -5,6 +5,8 @@
 ..\OBJ\tcp_in.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\tcp_in.o: ..\LWIP\arch/cc.h
 ..\OBJ\tcp_in.o: ..\LWIP\arch/cpu.h
+..\OBJ\tcp_in.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\tcp_in.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\tcp_in.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\tcp_in.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
 ..\OBJ\tcp_in.o: ..\LWIP\lwip-1.4.1\src\include\lwip/tcp_impl.h

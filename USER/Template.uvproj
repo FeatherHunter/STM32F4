@@ -348,9 +348,9 @@
             <uSurpInc>0</uSurpInc>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
+              <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER,__FPU_USED=1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\HARDWARE\BEEP;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\LCD;..\HARDWARE\TIMER;..\HARDWARE\RNG;..\HARDWARE\PWM;..\HARDWARE\DHT11;..\HARDWARE\HC05;..\HARDWARE\USART3;..\HARDWARE\RTC;..\HARDWARE\ADC;..\HARDWARE\DAC;..\HARDWARE\PWM_DAC;..\HARDWARE\ADC3;..\HARDWARE\LSENS;..\HARDWARE\TPAD;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\HARDWARE\TOUCH;..\SOFTWARE\GRAPHIC;..\HARDWARE\RNG;..\HARDWARE\REMOTE;..\HARDWARE\CAN;..\HARDWARE\STMFLASH;..\SOFTWARE\REMOTECTRL;..\HARDWARE\STMFLASH;..\HARDWARE\SPI;..\HARDWARE\W25QXX;..\SOFTWARE\BLUETOOTH;..\HARDWARE\RS485;..\HARDWARE\SRAM;..\USMART;..\MALLOC;..\FWLIB\STM32F4xx_StdPeriph_Driver\inc;..\FWLIB\STM32F4x7_ETH_Driver\inc;..\HARDWARE\SDIO;..\FATFS\src;..\FATFS\exfuns;..\TEXT;..\PICTURE;..\ATK-RM04;..\LWIP\arch;..\LWIP;..\LWIP\lwip-1.4.1\src\include\ipv4;..\LWIP\lwip-1.4.1\src\include\ipv6;..\LWIP\lwip-1.4.1\src\include\lwip;..\LWIP\lwip-1.4.1\src\include\netif;..\LWIP\lwip_app\lwip_comm;..\LWIP\lwip_app\tcp_client_demo;..\LWIP\lwip_app\tcp_server_demo;..\LWIP\lwip_app\udp_demo;..\LWIP\lwip_app\web_server_demo;..\LWIP\lwip-1.4.1\src\include\lwip;..\LWIP\lwip-1.4.1\src\include;..\HARDWARE\ETHERNET;..\PICTURE</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\HARDWARE\LED;..\HARDWARE\BEEP;..\HARDWARE\KEY;..\HARDWARE\EXTI;..\HARDWARE\LCD;..\HARDWARE\TIMER;..\HARDWARE\RNG;..\HARDWARE\PWM;..\HARDWARE\DHT11;..\HARDWARE\HC05;..\HARDWARE\USART3;..\HARDWARE\RTC;..\HARDWARE\ADC;..\HARDWARE\DAC;..\HARDWARE\PWM_DAC;..\HARDWARE\ADC3;..\HARDWARE\LSENS;..\HARDWARE\TPAD;..\HARDWARE\24CXX;..\HARDWARE\IIC;..\HARDWARE\TOUCH;..\SOFTWARE\GRAPHIC;..\HARDWARE\RNG;..\HARDWARE\REMOTE;..\HARDWARE\CAN;..\HARDWARE\STMFLASH;..\SOFTWARE\REMOTECTRL;..\HARDWARE\STMFLASH;..\HARDWARE\SPI;..\HARDWARE\W25QXX;..\SOFTWARE\BLUETOOTH;..\HARDWARE\RS485;..\HARDWARE\SRAM;..\USMART;..\MALLOC;..\FWLIB\STM32F4xx_StdPeriph_Driver\inc;..\FWLIB\STM32F4x7_ETH_Driver\inc;..\HARDWARE\SDIO;..\FATFS\src;..\FATFS\exfuns;..\TEXT;..\PICTURE;..\ATK-RM04;..\LWIP\arch;..\LWIP;..\LWIP\lwip-1.4.1\src\include\ipv4;..\LWIP\lwip-1.4.1\src\include\ipv6;..\LWIP\lwip-1.4.1\src\include\lwip;..\LWIP\lwip-1.4.1\src\include\netif;..\LWIP\lwip_app\lwip_comm;..\LWIP\lwip_app\tcp_client_demo;..\LWIP\lwip_app\tcp_server_demo;..\LWIP\lwip_app\udp_demo;..\LWIP\lwip_app\web_server_demo;..\LWIP\lwip-1.4.1\src\include\lwip;..\LWIP\lwip-1.4.1\src\include;..\HARDWARE\ETHERNET;..\PICTURE;..\UCOSIII\uC-CPU;..\UCOSIII\uC-LIB;..\UCOSIII\UCOS-BSP;..\UCOSIII\UCOS-CONFIG;..\UCOSIII\uCOS-III;..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView;..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView;..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView;..\UCOSIII\uCOS-III\Source</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -600,11 +600,6 @@
               <FileName>sram.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\SRAM\sram.c</FilePath>
-            </File>
-            <File>
-              <FileName>lan8720.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\ETHERNET\lan8720.c</FilePath>
             </File>
             <File>
               <FileName>sdio_sdcard.c</FileName>
@@ -924,232 +919,222 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>LWIP-APP</GroupName>
+          <GroupName>UCOSIII_BSP</GroupName>
           <Files>
             <File>
-              <FileName>lwip_comm.c</FileName>
+              <FileName>bsp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip_app\lwip_comm\lwip_comm.c</FilePath>
-            </File>
-            <File>
-              <FileName>tcp_client_demo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip_app\tcp_client_demo\tcp_client_demo.c</FilePath>
-            </File>
-            <File>
-              <FileName>tcp_server_demo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip_app\tcp_server_demo\tcp_server_demo.c</FilePath>
-            </File>
-            <File>
-              <FileName>udp_demo.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip_app\udp_demo\udp_demo.c</FilePath>
-            </File>
-            <File>
-              <FileName>fs.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip_app\web_server_demo\fs.c</FilePath>
-            </File>
-            <File>
-              <FileName>httpd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip_app\web_server_demo\httpd.c</FilePath>
-            </File>
-            <File>
-              <FileName>httpd_cgi_ssi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip_app\web_server_demo\httpd_cgi_ssi.c</FilePath>
+              <FilePath>..\UCOSIII\UCOS-BSP\bsp.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>LWIP-NETIF</GroupName>
+          <GroupName>UCOSIII_CPU</GroupName>
           <Files>
             <File>
-              <FileName>etharp.c</FileName>
+              <FileName>cpu_core.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\netif\etharp.c</FilePath>
+              <FilePath>..\UCOSIII\uC-CPU\cpu_core.c</FilePath>
             </File>
             <File>
-              <FileName>ethernetif.c</FileName>
+              <FileName>cpu_c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\netif\ethernetif.c</FilePath>
+              <FilePath>..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView\cpu_c.c</FilePath>
+            </File>
+            <File>
+              <FileName>cpu_a.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\UCOSIII\uC-CPU\ARM-Cortex-M4\RealView\cpu_a.asm</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>LWIP-CORE</GroupName>
+          <GroupName>UCOSIII_LIB</GroupName>
           <Files>
             <File>
-              <FileName>def.c</FileName>
+              <FileName>lib_ascii.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\def.c</FilePath>
+              <FilePath>..\UCOSIII\uC-LIB\lib_ascii.c</FilePath>
             </File>
             <File>
-              <FileName>dhcp.c</FileName>
+              <FileName>lib_math.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\dhcp.c</FilePath>
+              <FilePath>..\UCOSIII\uC-LIB\lib_math.c</FilePath>
             </File>
             <File>
-              <FileName>dns.c</FileName>
+              <FileName>lib_mem.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\dns.c</FilePath>
+              <FilePath>..\UCOSIII\uC-LIB\lib_mem.c</FilePath>
             </File>
             <File>
-              <FileName>init.c</FileName>
+              <FileName>lib_str.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\init.c</FilePath>
+              <FilePath>..\UCOSIII\uC-LIB\lib_str.c</FilePath>
             </File>
             <File>
-              <FileName>mem.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\mem.c</FilePath>
-            </File>
-            <File>
-              <FileName>memp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\memp.c</FilePath>
-            </File>
-            <File>
-              <FileName>netif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\netif.c</FilePath>
-            </File>
-            <File>
-              <FileName>pbuf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\pbuf.c</FilePath>
-            </File>
-            <File>
-              <FileName>raw.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\raw.c</FilePath>
-            </File>
-            <File>
-              <FileName>stats.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\stats.c</FilePath>
-            </File>
-            <File>
-              <FileName>tcp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\tcp.c</FilePath>
-            </File>
-            <File>
-              <FileName>tcp_in.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\tcp_in.c</FilePath>
-            </File>
-            <File>
-              <FileName>tcp_out.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\tcp_out.c</FilePath>
-            </File>
-            <File>
-              <FileName>timers.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\timers.c</FilePath>
-            </File>
-            <File>
-              <FileName>udp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\udp.c</FilePath>
-            </File>
-            <File>
-              <FileName>autoip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\ipv4\autoip.c</FilePath>
-            </File>
-            <File>
-              <FileName>icmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\ipv4\icmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>igmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\ipv4\igmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>inet.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\ipv4\inet.c</FilePath>
-            </File>
-            <File>
-              <FileName>inet_chksum.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\ipv4\inet_chksum.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\ipv4\ip.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip_addr.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\ipv4\ip_addr.c</FilePath>
-            </File>
-            <File>
-              <FileName>ip_frag.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\core\ipv4\ip_frag.c</FilePath>
+              <FileName>lib_mem_a.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\UCOSIII\uC-LIB\Ports\ARM-Cortex-M4\RealView\lib_mem_a.asm</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>LWIP-ARCH</GroupName>
+          <GroupName>UCOSIII_CORE</GroupName>
           <Files>
             <File>
-              <FileName>sys_arch.c</FileName>
+              <FileName>os_cfg_app.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\arch\sys_arch.c</FilePath>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_cfg_app.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_core.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_core.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_dbg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_dbg.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_flag.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_flag.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_int.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_int.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_mem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_mem.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_msg.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_msg.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_mutex.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_mutex.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_pend_multi.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_pend_multi.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_prio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_prio.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_q.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_q.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_sem.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_sem.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_stat.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_stat.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_task.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_tick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_tick.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_time.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_tmr.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_tmr.c</FilePath>
+            </File>
+            <File>
+              <FileName>os_var.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Source\os_var.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
-          <GroupName>LWIP-API</GroupName>
+          <GroupName>UCOSIII_PORT</GroupName>
           <Files>
             <File>
-              <FileName>api_lib.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\api\api_lib.c</FilePath>
+              <FileName>os_cpu_a.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu_a.asm</FilePath>
             </File>
             <File>
-              <FileName>api_msg.c</FileName>
+              <FileName>os_cpu_c.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\api\api_msg.c</FilePath>
+              <FilePath>..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu_c.c</FilePath>
             </File>
             <File>
-              <FileName>err.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\api\err.c</FilePath>
+              <FileName>os_cpu.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\UCOSIII\uCOS-III\Ports\ARM-Cortex-M4\Generic\RealView\os_cpu.h</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>UCOSIII_CONFIG</GroupName>
+          <Files>
+            <File>
+              <FileName>app_cfg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\UCOSIII\UCOS-CONFIG\app_cfg.h</FilePath>
             </File>
             <File>
-              <FileName>netbuf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\api\netbuf.c</FilePath>
+              <FileName>cpu_cfg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\UCOSIII\UCOS-CONFIG\cpu_cfg.h</FilePath>
             </File>
             <File>
-              <FileName>netdb.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\api\netdb.c</FilePath>
+              <FileName>includes.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\UCOSIII\UCOS-CONFIG\includes.h</FilePath>
             </File>
             <File>
-              <FileName>netifapi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\api\netifapi.c</FilePath>
+              <FileName>lib_cfg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\UCOSIII\UCOS-CONFIG\lib_cfg.h</FilePath>
             </File>
             <File>
-              <FileName>sockets.c</FileName>
+              <FileName>os_app_hooks.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\api\sockets.c</FilePath>
+              <FilePath>..\UCOSIII\UCOS-CONFIG\os_app_hooks.c</FilePath>
             </File>
             <File>
-              <FileName>tcpip.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\LWIP\lwip-1.4.1\src\api\tcpip.c</FilePath>
+              <FileName>os_app_hooks.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\UCOSIII\UCOS-CONFIG\os_app_hooks.h</FilePath>
+            </File>
+            <File>
+              <FileName>os_cfg.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\UCOSIII\UCOS-CONFIG\os_cfg.h</FilePath>
+            </File>
+            <File>
+              <FileName>os_cfg_app.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\UCOSIII\UCOS-CONFIG\os_cfg_app.h</FilePath>
             </File>
           </Files>
         </Group>

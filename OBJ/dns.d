@@ -5,5 +5,7 @@
 ..\OBJ\dns.o: ..\LWIP\lwip-1.4.1\src\include\lwip/arch.h
 ..\OBJ\dns.o: ..\LWIP\arch/cc.h
 ..\OBJ\dns.o: ..\LWIP\arch/cpu.h
+..\OBJ\dns.o: ..\UCOSIII\uC-CPU\cpu_def.h
+..\OBJ\dns.o: ..\UCOSIII\UCOS-CONFIG\cpu_cfg.h
 ..\OBJ\dns.o: D:\Keil_ARM\ARM\ARMCC\bin\..\include\stdio.h
 ..\OBJ\dns.o: ..\LWIP\lwip-1.4.1\src\include\lwip/opt.h
