@@ -44,7 +44,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>..\OBJ\</OutputDirectory>
-          <OutputName>Template</OutputName>
+          <OutputName>IHome</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -452,19 +452,9 @@
           <GroupName>HARDWARE</GroupName>
           <Files>
             <File>
-              <FileName>led.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\LED\led.c</FilePath>
-            </File>
-            <File>
               <FileName>beep.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\BEEP\beep.c</FilePath>
-            </File>
-            <File>
-              <FileName>key.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\KEY\key.c</FilePath>
             </File>
             <File>
               <FileName>lcd.c</FileName>
@@ -472,104 +462,9 @@
               <FilePath>..\HARDWARE\LCD\lcd.c</FilePath>
             </File>
             <File>
-              <FileName>timer.c</FileName>
+              <FileName>led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
-            </File>
-            <File>
-              <FileName>pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\PWM\pwm.c</FilePath>
-            </File>
-            <File>
-              <FileName>usart3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\USART3\usart3.c</FilePath>
-            </File>
-            <File>
-              <FileName>hc05.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\HC05\hc05.c</FilePath>
-            </File>
-            <File>
-              <FileName>adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\ADC\adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\DAC\dac.c</FilePath>
-            </File>
-            <File>
-              <FileName>pwmdac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\PWM_DAC\pwmdac.c</FilePath>
-            </File>
-            <File>
-              <FileName>adc3.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\ADC3\adc3.c</FilePath>
-            </File>
-            <File>
-              <FileName>lsens.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\LSENS\lsens.c</FilePath>
-            </File>
-            <File>
-              <FileName>tpad.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TPAD\tpad.c</FilePath>
-            </File>
-            <File>
-              <FileName>ctiic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TOUCH\ctiic.c</FilePath>
-            </File>
-            <File>
-              <FileName>ft5206.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TOUCH\ft5206.c</FilePath>
-            </File>
-            <File>
-              <FileName>gt9147.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TOUCH\gt9147.c</FilePath>
-            </File>
-            <File>
-              <FileName>ott2001a.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TOUCH\ott2001a.c</FilePath>
-            </File>
-            <File>
-              <FileName>touch.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\TOUCH\touch.c</FilePath>
-            </File>
-            <File>
-              <FileName>24cxx.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\24CXX\24cxx.c</FilePath>
-            </File>
-            <File>
-              <FileName>myiic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\IIC\myiic.c</FilePath>
-            </File>
-            <File>
-              <FileName>rng.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\RNG\rng.c</FilePath>
-            </File>
-            <File>
-              <FileName>rtc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\RTC\rtc.c</FilePath>
-            </File>
-            <File>
-              <FileName>remote.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\REMOTE\remote.c</FilePath>
+              <FilePath>..\HARDWARE\LED\led.c</FilePath>
             </File>
             <File>
               <FileName>can.c</FileName>
@@ -577,9 +472,9 @@
               <FilePath>..\HARDWARE\CAN\can.c</FilePath>
             </File>
             <File>
-              <FileName>stmflash.c</FileName>
+              <FileName>remote.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\STMFLASH\stmflash.c</FilePath>
+              <FilePath>..\HARDWARE\REMOTE\remote.c</FilePath>
             </File>
             <File>
               <FileName>w25qxx.c</FileName>
@@ -587,9 +482,14 @@
               <FilePath>..\HARDWARE\W25QXX\w25qxx.c</FilePath>
             </File>
             <File>
-              <FileName>spi.c</FileName>
+              <FileName>usart3.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\SPI\spi.c</FilePath>
+              <FilePath>..\HARDWARE\USART3\usart3.c</FilePath>
+            </File>
+            <File>
+              <FileName>myiic.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\IIC\myiic.c</FilePath>
             </File>
             <File>
               <FileName>rs485.c</FileName>
@@ -597,36 +497,34 @@
               <FilePath>..\HARDWARE\RS485\rs485.c</FilePath>
             </File>
             <File>
-              <FileName>sram.c</FileName>
+              <FileName>stmflash.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\SRAM\sram.c</FilePath>
+              <FilePath>..\HARDWARE\STMFLASH\stmflash.c</FilePath>
             </File>
             <File>
-              <FileName>sdio_sdcard.c</FileName>
+              <FileName>spi.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\SDIO\sdio_sdcard.c</FilePath>
+              <FilePath>..\HARDWARE\SPI\spi.c</FilePath>
+            </File>
+            <File>
+              <FileName>timer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\TIMER\timer.c</FilePath>
+            </File>
+            <File>
+              <FileName>dht11.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\DHT11\dht11.c</FilePath>
+            </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HARDWARE\KEY\key.c</FilePath>
             </File>
           </Files>
         </Group>
         <Group>
           <GroupName>SOFTWARE</GroupName>
-          <Files>
-            <File>
-              <FileName>graphic.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SOFTWARE\GRAPHIC\graphic.c</FilePath>
-            </File>
-            <File>
-              <FileName>infrared_remote_ctrl.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SOFTWARE\REMOTECTRL\infrared_remote_ctrl.c</FilePath>
-            </File>
-            <File>
-              <FileName>bluetooth.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\SOFTWARE\BLUETOOTH\bluetooth.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>USMART</GroupName>
@@ -675,31 +573,6 @@
               <FileName>stm32f4xx_can.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_can.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_crc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_crc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_cryp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_cryp_aes.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_aes.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_cryp_des.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_des.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_cryp_tdes.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_tdes.c</FilePath>
             </File>
             <File>
               <FileName>stm32f4xx_dac.c</FileName>
@@ -752,21 +625,6 @@
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_hash.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_hash_md5.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash_md5.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_hash_sha1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash_sha1.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_i2c.c</FilePath>
@@ -802,11 +660,6 @@
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rtc.c</FilePath>
             </File>
             <File>
-              <FileName>stm32f4xx_sai.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sai.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32f4xx_sdio.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sdio.c</FilePath>
@@ -835,86 +688,6 @@
               <FileName>stm32f4xx_wwdg.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FWLIB\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_wwdg.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FWLIB_ETH</GroupName>
-          <Files>
-            <File>
-              <FileName>stm32f4x7_eth.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FWLIB\STM32F4x7_ETH_Driver\src\stm32f4x7_eth.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>PICTURE</GroupName>
-          <Files>
-            <File>
-              <FileName>bmp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\PICTURE\bmp.c</FilePath>
-            </File>
-            <File>
-              <FileName>gif.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\PICTURE\gif.c</FilePath>
-            </File>
-            <File>
-              <FileName>piclib.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\PICTURE\piclib.c</FilePath>
-            </File>
-            <File>
-              <FileName>tjpgd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\PICTURE\tjpgd.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>TEXT</GroupName>
-          <Files>
-            <File>
-              <FileName>fontupd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\TEXT\fontupd.c</FilePath>
-            </File>
-            <File>
-              <FileName>text.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\TEXT\text.c</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FATFS</GroupName>
-          <Files>
-            <File>
-              <FileName>exfuns.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FATFS\exfuns\exfuns.c</FilePath>
-            </File>
-            <File>
-              <FileName>fattester.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FATFS\exfuns\fattester.c</FilePath>
-            </File>
-            <File>
-              <FileName>diskio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FATFS\src\diskio.c</FilePath>
-            </File>
-            <File>
-              <FileName>ff.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FATFS\src\ff.c</FilePath>
-            </File>
-            <File>
-              <FileName>cc936.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FATFS\src\option\cc936.c</FilePath>
             </File>
           </Files>
         </Group>
